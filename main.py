@@ -93,7 +93,7 @@ def divide(a: str, b: str):
 
 
 @app.get("/average/{a}/{b}/{c}/{d}", status_code=200)
-def average(a: str, b: str):
+def average(a: str, b: str, c: str, d: str):
     """
     Calculates the average of four numbers.
     
