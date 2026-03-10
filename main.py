@@ -113,7 +113,7 @@ def average(a: str, b: str, c: str, d: str):
         d = float(d)
     except ValueError:
         raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail="All parameters 'a', 'b', 'c', and 'd' must be valid numbers")
-    return {"operation": "average", "a": a, "b": b,"result": (a + b + c + d) / 4}
+    return {"operation": "average", "a": a, "b": b,"c": c, "d": d, "result": (a + b + c + d) / 4}
     
 
 @app.get("/tip/{bill_amount}/{tip_percent}", status_code=200)
@@ -137,7 +137,7 @@ def tip_calculator(bill_amount: str, tip_percent: str):
         raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail="The 'bill_amount' and 'tip_percent' cannot be negative. Please provide non-negative values for both 'bill_amount' and 'tip_percent'.")
     tip_amount = bill_amount * (tip_percent / 100)
     total_bill = bill_amount + tip_amount
-    return {"operation": "tip calculation", "tip amount": tip_amount, "total bill amount": total_bill}
+    return {"operation": "tip calculation", "Provided bill amount": bill_amount, "Desired tip percent": tip_percent, "tip amount": tip_amount, "total bill amount": total_bill}
 
 
 @app.get("/percentage/{part}/{whole}", status_code=200)
